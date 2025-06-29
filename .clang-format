@@ -1,0 +1,92 @@
+# Defaults
+BasedOnStyle: Google
+---
+Language: Cpp
+Standard: Cpp11
+NamespaceIndentation: None
+AlignTrailingComments: true
+AllowShortLoopsOnASingleLine: false
+
+IndentWidth: 2 
+TabWidth: 2
+UseTab: Never
+
+AlignAfterOpenBracket: Align  
+
+AlignConsecutiveAssignments: true
+AlignConsecutiveDeclarations: true
+AlignConsecutiveMacros: true
+
+AlignEscapedNewlines: Left
+
+AlignOperands: Align
+BreakBeforeBinaryOperators: NonAssignment 
+
+AllowAllParametersOfDeclarationOnNextLine: false
+BinPackParameters: false
+# same for arguments instead of parameters
+AllowAllArgumentsOnNextLine: false
+BinPackArguments: false
+
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortBlocksOnASingleLine: Never
+
+AlwaysBreakAfterReturnType: None
+AlwaysBreakAfterDefinitionReturnType: None
+
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterCaseLabel: true
+  AfterClass: true
+  AfterControlStatement: Always
+  AfterEnum: true
+  AfterFunction: true
+  AfterNamespace: true
+  AfterObjCDeclaration: false
+  AfterStruct: true
+  AfterUnion: true
+  AfterExternBlock: true
+  BeforeCatch: true
+  BeforeElse: true
+  BeforeLambdaBody: false
+  IndentBraces: false
+  SplitEmptyFunction: true
+  SplitEmptyRecord: true
+  SplitEmptyNamespace: true
+
+
+BreakBeforeTernaryOperators: true
+#BreakInheritanceList: AfterComma
+BreakStringLiterals: true
+
+ColumnLimit: 120
+CompactNamespaces: false
+
+IncludeBlocks: Preserve
+SortIncludes: false
+
+# position of public: private: etc inside a class declaration
+AccessModifierOffset: -1
+
+# You can think of penalties as a way of discouraging certain line-breaking behavior
+PenaltyReturnTypeOnItsOwnLine: 200
+PenaltyBreakAssignment: 100
+PenaltyExcessCharacter: 1000000
+
+PointerAlignment: Left
+#ReferenceAlignment: Pointer # clang-14
+
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeCpp11BracedList: true
+SpaceBeforeCtorInitializerColon: false
+SpaceBeforeInheritanceColon: false
+SpaceBeforeSquareBrackets: false
+SpacesBeforeTrailingComments: 5 
+SpacesInParentheses: false
+
+---
+# Language: JavaScript 
+# IndentWidth: 25 
+
+

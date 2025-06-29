@@ -1,0 +1,12 @@
+set(TARGET_NAME LBM-Main)
+set(EXTRA_LIBS )
+set(SOURCES_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+
+file(GLOB CPP_SOURCES ${SOURCES_DIR}/**.cpp)
+add_executable(${TARGET_NAME} ${CPP_SOURCES})
+target_link_libraries(${TARGET_NAME} ${EXTRA_LIBS})
+#target_include_directories(${TARGET_NAME} INTERFACE ${SOURCES_DIR})
+
+install(TARGETS ${TARGET_NAME} DESTINATION ${PROD_BINARIES_PATH})
+
+# ----------------------------------------------------------------------------------------------------
