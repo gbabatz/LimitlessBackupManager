@@ -23,11 +23,14 @@ set(MOCK_BINARIES_PATH ${INSTALL_PREFIX}/mocks)
 
 # Build type selection
 option(BUILD_TESTS "Build tests" OFF)
+option(BUILD_DEBUG "Build with debug symbols" OFF)
 
 if(BUILD_TESTS)
     include(cm-tests.cmake)
+elseif(BUILD_DEBUG)
+    include(cm-debug.cmake)
 else()
-    include(cm-production.cmake)
+    include(cm-release.cmake)
 endif()
 
 #set(CMAKE_BUILD_RPATH ${MOCK_BINARIES_PATH})
