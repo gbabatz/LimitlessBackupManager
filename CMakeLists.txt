@@ -7,7 +7,6 @@ project(LBM VERSION 0.1 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)  # Disable compiler-specific extensions
-
 set(CMAKE_VERBOSE_MAKEFILE OFF)
 
 # Build configuration
@@ -15,22 +14,34 @@ if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Release)
 endif()
 
-# Install paths
+# Build mode selection (default to Release)
+set(BUILD_MODE "RELEASE" CACHE STRING "Build mode: RELEASE, DEBUG, or TEST")
+set_property(CACHE BUILD_MODE PROPERTY STRINGS "RELEASE" "DEBUG" "TEST")
+
+# Install paths - organized under build/ with mode-specific subdirectories
 set(INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/build/install)
-set(PROD_BINARIES_PATH ${INSTALL_PREFIX}/bin)
-set(TEST_BINARIES_PATH ${INSTALL_PREFIX}/tests)
-set(MOCK_BINARIES_PATH ${INSTALL_PREFIX}/mocks)
+if(BUILD_MODE STREQUAL "RELEASE")
+    set(INSTALL_SUBDIR "release")
+elseif(BUILD_MODE STREQUAL "DEBUG")
+    set(INSTALL_SUBDIR "debug")
+elseif(BUILD_MODE STREQUAL "TEST")
+    set(INSTALL_SUBDIR "test")
+endif()
 
-# Build type selection
-option(BUILD_TESTS "Build tests" OFF)
-option(BUILD_DEBUG "Build with debug symbols" OFF)
+set(PROD_BINARIES_PATH ${INSTALL_PREFIX}/${INSTALL_SUBDIR}/bin)
+set(DEBUG_BINARIES_PATH ${INSTALL_PREFIX}/${INSTALL_SUBDIR}/debug)
+set(TEST_BINARIES_PATH ${INSTALL_PREFIX}/${INSTALL_SUBDIR}/tests)
+set(MOCK_BINARIES_PATH ${INSTALL_PREFIX}/${INSTALL_SUBDIR}/mocks)
 
-if(BUILD_TESTS)
-    include(cm-tests.cmake)
-elseif(BUILD_DEBUG)
-    include(cm-debug.cmake)
-else()
+# Include appropriate configuration
+if(BUILD_MODE STREQUAL "RELEASE")
     include(cm-release.cmake)
+elseif(BUILD_MODE STREQUAL "DEBUG")
+    include(cm-debug.cmake)
+elseif(BUILD_MODE STREQUAL "TEST")
+    include(cm-tests.cmake)
+else()
+    message(FATAL_ERROR "Invalid BUILD_MODE: ${BUILD_MODE}. Must be RELEASE, DEBUG, or TEST")
 endif()
 
 #set(CMAKE_BUILD_RPATH ${MOCK_BINARIES_PATH})

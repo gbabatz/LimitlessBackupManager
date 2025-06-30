@@ -1,14 +1,12 @@
-#!/usr/bin/bash
-
-# rm -rf ./build
-mkdir -p ./build
+#!/usr/bin/bash  
 
 echo "Building RELEASE mode..."
 
-cmake -S . -B ./build \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_CXX_FLAGS="-O3 -DNDEBUG -flto" \
-    -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+mkdir -p ./build/release
 
-cmake --build ./build -j$(nproc)
-cmake --install ./build
+cmake -S . -B ./build/release \
+    -DBUILD_MODE=RELEASE \
+    -DCMAKE_EXPORT_COMPILE_COMMANDS=ON 
+cmake --build ./build/release -j$(nproc)  
+cmake --install ./build/release
+echo "Release build complete. Binaries in build/install/bin/"

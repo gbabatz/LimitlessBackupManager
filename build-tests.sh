@@ -1,9 +1,12 @@
 #!/usr/bin/bash
 
-# rm -rf ./build-test
-mkdir -p ./build-test
-
 echo "Building TEST mode..."
 
-cmake -S . -B ./build-test -DBUILD_TESTS=ON
-cmake --build ./build-test -j$(nproc)
+mkdir -p ./build/tests
+
+cmake -S . -B ./build/tests \
+    -DBUILD_MODE=TEST \
+    -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+cmake --build ./build/tests -j$(nproc)
+echo "Running tests..."
+ctest --test-dir ./build/tests --output-on-failure

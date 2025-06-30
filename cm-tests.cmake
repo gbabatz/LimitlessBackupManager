@@ -1,8 +1,16 @@
 cmake_minimum_required(VERSION 3.14)
 
-# Build configuration
-if(NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE Tests)
-endif()
+message(STATUS "Configuring TEST build")
 
-# add_subdirectory(src)
+# Set build type (tests need debug info)
+set(CMAKE_BUILD_TYPE Debug)
+
+# Debug flags for tests
+set(CMAKE_CXX_FLAGS_DEBUG "-g -O0 -Wall -Wextra -pedantic")
+
+# Build both source and tests
+add_subdirectory(src)
+add_subdirectory(tests)
+
+# Enable CTest
+enable_testing()

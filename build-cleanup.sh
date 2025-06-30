@@ -1,5 +1,5 @@
 #!/usr/bin/bash
 
-rm -rf ./build
-rm -rf ./build-test
-rm -rf ./build-debug
+echo "Cleaning all build artifacts..."
+rm -rf ./build/
+echo "Build cleanup complete."

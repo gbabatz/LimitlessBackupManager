@@ -9,9 +9,7 @@
 - add clang-format to path and vscode
 
 ## Build: (linux)
-run `clean-build.sh`
-run `build-release.sh`
-run `run-app.sh`
+run `build-cleanup.sh`, `build-release.sh`, `run-app.sh`
 
 ## TODO:
 - add static analysis tools (clang-tidy, cppcheck, cpplint, gcov)
