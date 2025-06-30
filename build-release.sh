@@ -9,4 +9,4 @@ cmake -S . -B ./build/release \
     -DCMAKE_EXPORT_COMPILE_COMMANDS=ON 
 cmake --build ./build/release -j$(nproc)  
 cmake --install ./build/release
-echo "Release build complete. Binaries in build/install/bin/"
+echo "Release build complete."
