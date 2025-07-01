@@ -25,7 +25,7 @@ if (USE_FETCH_CONTENT)
 
     FetchContent_MakeAvailable(googletest) # the name here must match the one in FetchContent_Declare
 else()
-    add_subdirectory(dependencies/googletest-1.17.0)
+    add_subdirectory(dependencies/googletest-1.17.0) # depreciated
 endif()
 
 add_library(test_common INTERFACE)

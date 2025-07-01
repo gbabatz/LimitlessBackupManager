@@ -1,15 +1,8 @@
-# UNDER DEVELOPMENT
+### This is LBM - A Backup Solution
 
-## Prerequisites:
-- download googletest lib from [here](https://github.com/google/googletest) and place it under dependencies/ folder
+## How to build: (Linux)
+For release build execute:
+`build-cleanup.sh`, `build-release.sh`, `run-app.sh`
 
-## To contribute: TODO
-- steps to install c++ support
-- steps to install clang-format
-- add clang-format to path and vscode
-
-## Build: (linux)
-run `build-cleanup.sh`, `build-release.sh`, `run-app.sh`
-
-## TODO:
-- add static analysis tools (clang-tidy, cppcheck, cpplint, gcov)
+For test build execute
+`build-cleanup.sh`, `build-test.sh`, `run-test.sh`
