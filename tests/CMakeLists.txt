@@ -19,7 +19,7 @@ set_target_properties(${TARGET_NAME} PROPERTIES
 )
 
 # # Register tests with CTest
-# include(GoogleTest)
+# include(GoogleTest) # Loads CMake helper functions for GoogleTest Module - Looks for Googletest.cmake Module
 # gtest_discover_tests(${TARGET_NAME}
 #     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 #     PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
