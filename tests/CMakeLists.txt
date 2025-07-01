@@ -18,12 +18,11 @@ set_target_properties(${TARGET_NAME} PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
 )
 
-# # Register tests with CTest
-# include(GoogleTest) # Loads CMake helper functions for GoogleTest Module - Looks for Googletest.cmake Module
-# gtest_discover_tests(${TARGET_NAME}
-#     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-#     PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
-# )
+# Register tests with CTest
+gtest_discover_tests(${TARGET_NAME}
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+)
 
 # Install
 install(TARGETS ${TARGET_NAME}

@@ -33,7 +33,10 @@ target_compile_definitions(test_common INTERFACE GTEST) # in code macro
 target_link_libraries(test_common INTERFACE gtest gmock gtest_main)
 
 # Enable CTest
-# enable_testing()
+enable_testing()
+
+# Load GoogleTest CMake functions, i.e. gtest_discover_tests(...)
+include(GoogleTest) # Looks for Googletest.cmake Module
 
 # Build both source and tests
 add_subdirectory(tests)
