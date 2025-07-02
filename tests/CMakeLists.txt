@@ -12,6 +12,8 @@ add_executable(${TARGET_NAME} ${TEST_SOURCES})
 # Link with our common test interface
 target_link_libraries(${TARGET_NAME} PRIVATE test_common)
 
+target_compile_definitions(${TARGET_NAME} PRIVATE PROJECT_ROOT="${PROJECT_ROOT}")
+
 # Set properties
 set_target_properties(${TARGET_NAME} PROPERTIES
     OUTPUT_NAME "sample-tests"  # Final executable name
@@ -20,9 +22,11 @@ set_target_properties(${TARGET_NAME} PROPERTIES
 
 # Register tests with CTest
 gtest_discover_tests(${TARGET_NAME}
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} # Ensure tests run in the correct directory
     PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
 )
+# TIP: the WORKING_DIRECTORY property tells CTest "when you run this test, 
+# simulate as if you are calling the binarary from this directory"
 
 # Install
 install(TARGETS ${TARGET_NAME}
