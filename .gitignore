@@ -43,6 +43,7 @@
 # External dependencies
 /dependencies
 /build
+/logs
 /_archive
 /docs
 /.vscode

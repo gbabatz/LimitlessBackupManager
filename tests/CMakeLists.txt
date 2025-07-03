@@ -3,6 +3,7 @@ set(TARGET_NAME sample-tests)  # Use lowercase for consistency
 # Collect test sources (avoid GLOB for better dependency tracking)
 set(TEST_SOURCES
     sample_tests.cpp
+    FileCopyTests.cpp
     # Add more
 )
 
