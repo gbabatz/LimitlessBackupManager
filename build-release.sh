@@ -9,4 +9,10 @@ cmake -S . -B ./build/release \
     -DCMAKE_EXPORT_COMPILE_COMMANDS=ON 
 cmake --build ./build/release -j$(nproc)  
 cmake --install ./build/release
+
+if [ $? -ne 0 ]; then
+    echo "Release build failed."
+    exit 1
+fi
+
 echo "Release build complete."

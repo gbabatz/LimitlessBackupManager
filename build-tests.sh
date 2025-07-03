@@ -12,4 +12,10 @@ cmake -S . -B ./build/tests \
     -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
     -DPROJECT_ROOT="${PROJECT_ROOT}"
 cmake --build ./build/tests -j$(nproc)
+
+if [ $? -ne 0 ]; then
+    echo "Test build failed."
+    exit 1
+fi
+
 echo "Test build complete."
