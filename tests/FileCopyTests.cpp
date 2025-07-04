@@ -64,7 +64,7 @@ int CreateSandboxDirectories(const fs::path &sandbox_path) {
 }
 
 void FinalizeDirectories(const fs::path &sandbox_path) {
-  
+
   fs::current_path(sandbox_path.parent_path());
 
   auto command = "tree . -o " + LOGS_PATH + "/tree_output.txt";

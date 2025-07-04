@@ -1,8 +1,7 @@
-set(TARGET_NAME sample-tests)  # Use lowercase for consistency
+set(TARGET_NAME file-copy-tests)  # Use lowercase for consistency
 
 # Collect test sources (avoid GLOB for better dependency tracking)
 set(TEST_SOURCES
-    sample_tests.cpp
     FileCopyTests.cpp
     # Add more
 )
@@ -17,7 +16,7 @@ target_compile_definitions(${TARGET_NAME} PRIVATE PROJECT_ROOT="${PROJECT_ROOT}"
 
 # Set properties
 set_target_properties(${TARGET_NAME} PROPERTIES
-    OUTPUT_NAME "sample-tests"  # Final executable name
+    OUTPUT_NAME ${TARGET_NAME}  # Final executable name
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
 )
 
