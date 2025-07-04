@@ -1,13 +1,13 @@
 /**
- * @file FileCopyTests.cpp
- * @brief Unit tests for file copying functionality in LimitlessBackupManager.
+ * @file StdToolsTests.cpp
+ * @brief Unit tests for standard tools and filesystem operations that help to
+ * understand the tooling used in this project.
  * @author      LimitlessBackupManager Contributors
  * @date        2025
  * @copyright   MIT License
  */
 
 #include "gtest/gtest.h"
-// #include "gmock/gmock.h"
 
 #include <filesystem>
 #include <fstream>
@@ -73,7 +73,7 @@ void FinalizeDirectories(const fs::path &sandbox_path) {
   fs::remove_all(sandbox_path);
 }
 
-class FileCopyFixture : public Test {
+class StdToolsFixture : public Test {
 public:
   void SetUp() override {
     // Initialize resources or state needed for tests
@@ -89,18 +89,18 @@ protected:
   fs::path sandbox_path{SANDBOX_PATH};
 };
 
-TEST_F(FileCopyFixture, DISABLED_WhoRunsMyTest) {
+TEST_F(StdToolsFixture, DISABLED_WhoRunsMyTest) {
   // std::cout << "cwd: " << fs::current_path() << "\n";
   // std::cout << "argv[0]: " << argv[0] << "\n";
 }
 
-TEST_F(FileCopyFixture, CheckCurrentDirectory) {
+TEST_F(StdToolsFixture, CheckCurrentDirectory) {
   // Check if the current directory is the expected one
   std::string current_path = fs::current_path().string();
   EXPECT_EQ(current_path, TESTS_PATH);
 }
 
-TEST_F(FileCopyFixture, CheckTempDirectory) {
+TEST_F(StdToolsFixture, CheckTempDirectory) {
   // Change to a temporary directory
   fs::path temp_dir = fs::temp_directory_path();
   fs::current_path(temp_dir);
@@ -108,7 +108,7 @@ TEST_F(FileCopyFixture, CheckTempDirectory) {
   EXPECT_EQ(current_path, temp_dir.string());
 }
 
-TEST_F(FileCopyFixture,
+TEST_F(StdToolsFixture,
        CheckIfStdSystemWorkingDirectoryFollowsStdFilesystemCurrentPath) {
   // Check if the current directory is the expected one
   std::string current_path = fs::current_path().string();

@@ -1,8 +1,8 @@
-set(TARGET_NAME file-copy-tests)  # Use lowercase for consistency
+set(TARGET_NAME std_tools_tests)  # Use lowercase for consistency
 
 # Collect test sources (avoid GLOB for better dependency tracking)
 set(TEST_SOURCES
-    FileCopyTests.cpp
+    StdToolsTests.cpp
     # Add more
 )
 
