@@ -41,9 +41,10 @@
 *.dwo
 
 # External dependencies
-/dependencies
-/build
-/logs
 /_archive
-/docs
 /.vscode
+/build
+/dependencies
+/logs
+/docs
+/scripts

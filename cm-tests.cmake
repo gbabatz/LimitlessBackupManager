@@ -8,27 +8,39 @@ set(CMAKE_BUILD_TYPE Debug)
 # Debug flags for tests
 set(CMAKE_CXX_FLAGS_DEBUG "-g -O0 -Wall -Wextra -pedantic")
 
-set(USE_FETCH_CONTENT ON CACHE BOOL "Use modern CMake features like FetchContent")
-if (USE_FETCH_CONTENT)
-    # Modern approach: Use FetchContent instead of add_subdirectory for external deps
-    include(FetchContent) # load and execute another CMake file within the current scope
+# Add library for test utilities
+add_library(test_common INTERFACE)
 
-    # Option 1: Use FetchContent (recommended for newer CMake)
-    FetchContent_Declare(
-        googletest
-        GIT_REPOSITORY https://github.com/google/googletest.git
-        GIT_TAG        v1.17.0
-    )
+if(GTEST_BUILD STREQUAL "FETCH")
+    set(USE_FETCH_CONTENT ON CACHE BOOL "Use modern CMake features like FetchContent")
+    if (USE_FETCH_CONTENT)
+        # Modern approach: Use FetchContent instead of add_subdirectory for external deps
+        include(FetchContent) # load and execute another CMake file within the current scope
 
-    # For Windows: Prevent overriding the parent project's compiler/linker settings
-    set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+        # Option 1: Use FetchContent (recommended for newer CMake)
+        FetchContent_Declare(
+            googletest
+            GIT_REPOSITORY https://github.com/google/googletest.git
+            GIT_TAG        v1.17.0
+        )
 
-    FetchContent_MakeAvailable(googletest) # the name here must match the one in FetchContent_Declare
+        # For Windows: Prevent overriding the parent project's compiler/linker settings
+        set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+
+        
+        FetchContent_MakeAvailable(googletest) # the name here must match the one in FetchContent_Declare
+    endif()
+elseif(GTEST_BUILD STREQUAL "LOCAL")
+    # Local installation of GoogleTest - assumes it's installed in /usr/local
+    target_include_directories(test_common INTERFACE /usr/local/include)
+    target_link_directories(test_common INTERFACE /usr/local/lib/gtest /usr/local/lib/gmock)
+elseif(GTEST_BUILD STREQUAL "DEPS")
+    # Use local copy of GoogleTest in the dependencies directory
+    add_subdirectory(dependencies/googletest-1.17.0)
 else()
-    add_subdirectory(dependencies/googletest-1.17.0) # depreciated
+    message(FATAL_ERROR "Invalid GTEST_BUILD: ${GTEST_BUILD}. Must be FETCH, LOCAL, or DEPS")
 endif()
 
-add_library(test_common INTERFACE)
 target_compile_definitions(test_common INTERFACE GTEST) # in code macro
 target_link_libraries(test_common INTERFACE gtest gmock gtest_main)
 
