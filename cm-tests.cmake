@@ -51,5 +51,5 @@ enable_testing()
 include(GoogleTest) # Looks for Googletest.cmake Module
 
 # Build both source and tests
+add_subdirectory(src)
 add_subdirectory(tests)
-# add_subdirectory(src)

@@ -1,19 +1,19 @@
-set(TARGET_NAME lbm-core)
+set(TARGET_NAME file_copy)
 
 # Define sources
 set(SOURCES
-    # Add your .cpp files here as you create them
+    FileCopy.cpp
 )
 
 set(HEADERS
-    # Add your .h/.hpp files here
+    FileCopy.hpp
 )
 
 # Create library
 add_library(${TARGET_NAME} ${SOURCES} ${HEADERS})
 
 # Make it easy to link against the whole core
-add_library(LBM::Core ALIAS ${TARGET_NAME})
+add_library(LBM::Core::FileCopy ALIAS ${TARGET_NAME})
 
 # Include directories
 target_include_directories(${TARGET_NAME} 
