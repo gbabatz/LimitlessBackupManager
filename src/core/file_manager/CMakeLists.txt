@@ -1,19 +1,19 @@
-set(TARGET_NAME file_copy)
+set(TARGET_NAME file_manager)
 
 # Define sources
 set(SOURCES
-    FileCopy.cpp
+    FileManager.cpp
 )
 
 set(HEADERS
-    FileCopy.hpp
+    FileManager.hpp
 )
 
 # Create library
 add_library(${TARGET_NAME} ${SOURCES} ${HEADERS})
 
 # Make it easy to link against the whole core
-add_library(LBM::Core::FileCopy ALIAS ${TARGET_NAME})
+add_library(LBM::Core::FileManager ALIAS ${TARGET_NAME})
 
 # Include directories
 target_include_directories(${TARGET_NAME} 

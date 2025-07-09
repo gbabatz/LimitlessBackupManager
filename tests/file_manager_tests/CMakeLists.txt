@@ -1,13 +1,12 @@
-set(TARGET_NAME file_copy_tests)  # Use lowercase for consistency
+set(TARGET_NAME file_manager_tests)  # Use lowercase for consistency
 
 # Collect test sources (avoid GLOB for better dependency tracking)
 set(TEST_SOURCES
-    FileCopyTests.cpp
+    FileManagerTests.cpp
 )
 
 set(MODULE_UNDER_TEST
-    # file_copy
-    LBM::Core::FileCopy  # Ensure the alias is used for linking
+    LBM::Core::FileManager  # Ensure the alias is used for linking
 )
 
 # Create executable

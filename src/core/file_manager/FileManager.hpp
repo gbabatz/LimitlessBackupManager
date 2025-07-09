@@ -1,5 +1,5 @@
 /**
- * @file FileCopy.hpp
+ * @file FileManager.hpp
  * @brief
  * @author      LimitlessBackupManager Contributors
  * @date        2025
@@ -10,7 +10,7 @@
 #include <fstream>
 #include <string>
 
-class FileCopy {
+class FileManager {
 public:
 protected:
 private:

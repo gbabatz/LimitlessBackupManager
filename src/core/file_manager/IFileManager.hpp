@@ -1,12 +1,15 @@
 /**
- * @file FileCopy.cpp
+ * @file IFileManager.hpp
  * @brief
  * @author      LimitlessBackupManager Contributors
  * @date        2025
  * @copyright   MIT License
  */
 
-#include "FileCopy.hpp"
+// HEADER GUARDS?
 
-namespace fs = std::filesystem;
-
+class IFileManager {
+public:
+protected:
+private:
+};

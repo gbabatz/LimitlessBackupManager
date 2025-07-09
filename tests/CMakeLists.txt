@@ -1,2 +1,2 @@
 add_subdirectory(std_tools_tests)
-add_subdirectory(file_copy_tests)
+add_subdirectory(file_manager_tests)

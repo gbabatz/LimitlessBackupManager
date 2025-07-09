@@ -9,12 +9,12 @@
 #include "gtest/gtest.h"
 // #include "gmock/gmock.h"
 
-#include "FileCopy.hpp"
+#include "FileManager.hpp"
 
 using namespace ::testing;
 
-class FileCopyFixture : public Test {};
+class FileManagerFixture : public Test {};
 
-TEST_F(FileCopyFixture, CopyFile){
+TEST_F(FileManagerFixture, CopyFile){
     
 }
