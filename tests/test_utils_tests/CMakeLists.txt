@@ -1,16 +1,15 @@
-set(TARGET_NAME std_tools_tests)  # Use lowercase for consistency
+set(TARGET_NAME test_utils_tests)  # Use lowercase for consistency
 
 # Collect test sources (avoid GLOB for better dependency tracking)
 set(TEST_SOURCES
-    StdToolsTests.cpp
+    TestUtilsTests.cpp
 )
 
 # Create executable
 add_executable(${TARGET_NAME} ${TEST_SOURCES})
 
 # Link with our common test interface
-target_link_libraries(${TARGET_NAME} PRIVATE test_common)
-
+target_link_libraries(${TARGET_NAME} PRIVATE test_common LBM::Tests::TestUtils)
 target_compile_definitions(${TARGET_NAME} PRIVATE PROJECT_ROOT="${PROJECT_ROOT}")
 
 # Set properties

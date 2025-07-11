@@ -1,2 +1,3 @@
-add_subdirectory(std_tools_tests)
+add_subdirectory(_test_utils)
+add_subdirectory(test_utils_tests)
 add_subdirectory(file_manager_tests)
