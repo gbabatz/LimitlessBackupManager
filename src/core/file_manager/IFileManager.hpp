@@ -6,10 +6,13 @@
  * @copyright   MIT License
  */
 
-// HEADER GUARDS?
+#ifndef IFILEMANAGER_HPP
+#define IFILEMANAGER_HPP
 
 class IFileManager {
 public:
 protected:
 private:
 };
+
+#endif
