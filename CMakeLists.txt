@@ -33,6 +33,11 @@ set(DEBUG_BINARIES_PATH ${INSTALL_PREFIX}/${INSTALL_SUBDIR}/debug)
 set(TEST_BINARIES_PATH ${INSTALL_PREFIX}/${INSTALL_SUBDIR}/tests)
 set(MOCK_BINARIES_PATH ${INSTALL_PREFIX}/${INSTALL_SUBDIR}/mocks)
 
+# add logging library
+find_package(spdlog REQUIRED)
+add_library(build_common_libs INTERFACE)
+target_link_libraries(build_common_libs INTERFACE spdlog::spdlog)
+
 # Include appropriate configuration
 if(BUILD_MODE STREQUAL "RELEASE")
     include(cm-release.cmake)

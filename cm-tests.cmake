@@ -9,7 +9,7 @@ set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_CXX_FLAGS_DEBUG "-g -O0 -Wall -Wextra -pedantic")
 
 # Add library for test utilities
-add_library(test_common INTERFACE)
+add_library(test_common_libs INTERFACE)
 
 if(GTEST_BUILD STREQUAL "FETCH")
     set(USE_FETCH_CONTENT ON CACHE BOOL "Use modern CMake features like FetchContent")
@@ -32,8 +32,8 @@ if(GTEST_BUILD STREQUAL "FETCH")
     endif()
 elseif(GTEST_BUILD STREQUAL "LOCAL")
     # Local installation of GoogleTest - assumes it's installed in /usr/local
-    target_include_directories(test_common INTERFACE /usr/local/include)
-    target_link_directories(test_common INTERFACE /usr/local/lib/gtest /usr/local/lib/gmock)
+    target_include_directories(test_common_libs INTERFACE /usr/local/include)
+    target_link_directories(test_common_libs INTERFACE /usr/local/lib/gtest /usr/local/lib/gmock)
 elseif(GTEST_BUILD STREQUAL "DEPS")
     # Use local copy of GoogleTest in the dependencies directory
     add_subdirectory(dependencies/googletest-1.17.0)
@@ -41,8 +41,8 @@ else()
     message(FATAL_ERROR "Invalid GTEST_BUILD: ${GTEST_BUILD}. Must be FETCH, LOCAL, or DEPS")
 endif()
 
-target_compile_definitions(test_common INTERFACE GTEST) # in code macro
-target_link_libraries(test_common INTERFACE gtest gmock gtest_main)
+target_compile_definitions(test_common_libs INTERFACE GTEST) # in code macro
+target_link_libraries(test_common_libs INTERFACE gtest gmock gtest_main)
 
 # Enable CTest
 enable_testing()

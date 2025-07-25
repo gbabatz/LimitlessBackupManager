@@ -9,7 +9,7 @@ set(TEST_SOURCES
 add_executable(${TARGET_NAME} ${TEST_SOURCES})
 
 # Link with our common test interface
-target_link_libraries(${TARGET_NAME} PRIVATE test_common LBM::Tests::TestUtils)
+target_link_libraries(${TARGET_NAME} PRIVATE test_common_libs LBM::Tests::TestUtils)
 target_compile_definitions(${TARGET_NAME} PRIVATE PROJECT_ROOT="${PROJECT_ROOT}")
 
 # Set properties

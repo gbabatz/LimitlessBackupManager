@@ -6,3 +6,7 @@ For release build execute:
 
 For test build execute
 `build-cleanup.sh`, `build-test.sh`, `run-test.sh`
+
+dependencies:
+- https://github.com/gabime/spdlog
+- https://github.com/google/googletest

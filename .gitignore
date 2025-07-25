@@ -44,7 +44,7 @@
 /_archive
 /.vscode
 /build
-/dependencies
+#/dependencies
 /logs
 /docs
 /scripts
