@@ -6,6 +6,7 @@ set(SOURCES main.cpp)
 
 # Create executable
 add_executable(${TARGET_NAME} ${SOURCES})
+target_link_libraries(${TARGET_NAME} PRIVATE build_common_libs)
 
 # Set properties
 set_target_properties(${TARGET_NAME} PROPERTIES
