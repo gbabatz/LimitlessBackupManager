@@ -37,6 +37,10 @@ set(MOCK_BINARIES_PATH ${INSTALL_PREFIX}/${INSTALL_SUBDIR}/mocks)
 find_package(spdlog REQUIRED)
 add_library(build_common_libs INTERFACE)
 target_link_libraries(build_common_libs INTERFACE spdlog::spdlog)
+target_include_directories(build_common_libs INTERFACE
+    /usr/local/include/crow
+    /usr/local/include/asio
+)
 
 # Include appropriate configuration
 if(BUILD_MODE STREQUAL "RELEASE")

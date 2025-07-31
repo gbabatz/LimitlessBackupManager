@@ -10,3 +10,5 @@ For test build execute
 dependencies:
 - https://github.com/gabime/spdlog
 - https://github.com/google/googletest
+- https://github.com/CrowCpp/Crow
+- https://github.com/chriskohlhoff/asio/
