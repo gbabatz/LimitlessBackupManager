@@ -5,37 +5,76 @@
 
 #include "crow.h"
 
-int main() {
-  // Initialize the logger
-  std::shared_ptr<spdlog::logger> logger;
+#include <fstream>
+#include <sstream>
+
+std::string readFile(const std::string &path) {
+  std::ifstream file(path);
+  std::ostringstream ss;
+  ss << file.rdbuf();
+  return ss.str();
+}
+
+std::shared_ptr<spdlog::logger> g_logger;
+
+void InitializeLogger() {
   try {
-    logger = spdlog::basic_logger_mt("basic_logger", "logs/basic-log.txt");
+    g_logger = spdlog::basic_logger_mt("basic_logger", "logs/basic-log.txt");
   } catch (const spdlog::spdlog_ex &ex) {
     std::cout << "Log init failed: " << ex.what() << std::endl;
   }
-  if (!logger) {
+  if (!g_logger) {
     std::cerr << "Logger initialization failed." << std::endl;
-    return 1;
+    std::exit(EXIT_FAILURE);
   }
-  spdlog::set_default_logger(
-      logger); // this redirects all logs to the default logger
-  // logger->info("Application started"); // alternative way to log messages
-  // with log object logger->debug("Debugging information: main.cpp is
-  // running");
 
-  spdlog::set_level(
-      spdlog::level::debug); // this makes the debug log messages visible
-  spdlog::info("Application started");
-  spdlog::debug("Debugging information: main.cpp is running");
+  // redirect all logs to the default logger
+  spdlog::set_default_logger(g_logger);
 
+  // alternative way to log messages with log objects
+  // logger->info("Application started");
+  // logger->debug("Debugging information: main.cpp is running");
 
-  // Start the CROW server
+  // make the debug log messages visible
+  spdlog::set_level(spdlog::level::debug);
+}
+
+void StartCrowAndServer() {
+  // start the CROW server
   crow::SimpleApp app;
 
-  spdlog::info("Initiating CROW_ROUTE");
-  CROW_ROUTE(app, "/")([]() { return "Hello world"; });
+  // CROW_ROUTE(app, "/")([]() { return "Hello world"; });
+
+  // Serve static files from "./ui"
+  CROW_ROUTE(app, "/")([] {
+    crow::response res;
+    res.code = 200;
+    res.set_header("Content-Type", "text/html");
+    res.body = readFile("ui/index.html");
+    return res;
+  });
+
+  CROW_ROUTE(app, "/app.js")([] {
+    crow::response res;
+    res.code = 200;
+    res.set_header("Content-Type", "application/javascript");
+    res.body = readFile("ui/app.js");
+    return res;
+  });
 
   app.port(18080).multithreaded().run();
+  spdlog::info("CROW server started on port 18080");
+}
+
+int main() {
+  // initialize the logger
+  InitializeLogger();
+
+  spdlog::info("Application started");
+  spdlog::debug("main.cpp is running");
+
+  // start the CROW server
+  StartCrowAndServer();
 
   return 0;
 }
