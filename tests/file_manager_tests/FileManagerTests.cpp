@@ -45,16 +45,19 @@ TEST_F(FileManagerFixture, CreateManager) {
   EXPECT_TRUE(dynamic_cast<FileManager *>(fileManager_ptr.get()) != nullptr);
 }
 
-TEST_F(FileManagerFixture, CopyFile) {
+TEST_F(FileManagerFixture, CopyFile_Success) {
 
   std::string test_file = "test_file.txt";
   std::string test_file_source = TestUtils::SRC_PATH + "/" + test_file;
   std::string test_file_dest = TestUtils::DEST_PATH + "/" + test_file;
 
-  std::ofstream(test_file_source) << "This is a test file.";
+  std::string test_file_sample_txt = "This is a test file.";
+
+  std::ofstream(test_file_source) << test_file_sample_txt;
 
   // Perform the copy operation
-  bool result = fileManager_ptr->CopyFile(test_file_source, TestUtils::DEST_PATH);
+  bool result =
+      fileManager_ptr->CopyFile(test_file_source, TestUtils::DEST_PATH);
 
   // Check if the copy was successful
   EXPECT_TRUE(result);
@@ -64,5 +67,5 @@ TEST_F(FileManagerFixture, CopyFile) {
   std::string content((std::istreambuf_iterator<char>(destFile)),
                       std::istreambuf_iterator<char>());
 
-  EXPECT_EQ(content, "This is a test file.");
+  EXPECT_EQ(content, test_file_sample_txt);
 }
