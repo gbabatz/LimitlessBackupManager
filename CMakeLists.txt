@@ -40,6 +40,7 @@ target_link_libraries(build_common_libs INTERFACE spdlog::spdlog)
 target_include_directories(build_common_libs INTERFACE
     /usr/local/include/crow
     /usr/local/include/asio
+    ${CMAKE_SOURCE_DIR}/external/cxxopts/include
 )
 
 # Include appropriate configuration
