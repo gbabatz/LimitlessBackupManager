@@ -2,7 +2,7 @@
 set(TARGET_NAME lbm-main)  # Use lowercase for consistency
 
 # Collect sources (avoid GLOB for better dependency tracking)
-set(SOURCES main.cpp)
+set(SOURCES main.cpp crow-server-settings.cpp spdlog-settings.cpp)
 
 # Create executable
 add_executable(${TARGET_NAME} ${SOURCES})
