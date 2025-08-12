@@ -27,5 +27,6 @@ void InitializeLogger() {
   // logger->debug("Debugging information: main.cpp is running");
 
   // make the debug log messages visible
-  spdlog::set_level(spdlog::level::debug);
+  // spdlog::set_level(spdlog::level::debug);
+  spdlog::info("Logger initialized successfully");
 }

@@ -27,7 +27,6 @@ if(GTEST_BUILD STREQUAL "FETCH")
         # For Windows: Prevent overriding the parent project's compiler/linker settings
         set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
-        
         FetchContent_MakeAvailable(googletest) # the name here must match the one in FetchContent_Declare
     endif()
 elseif(GTEST_BUILD STREQUAL "LOCAL")
