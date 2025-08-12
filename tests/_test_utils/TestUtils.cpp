@@ -21,7 +21,7 @@ const std::string TU::TESTS_PATH = PROJECT_ROOT_PATH + "/tests";
 const std::string TU::LOGS_PATH = PROJECT_ROOT_PATH + "/logs";
 const std::string TU::SANDBOX_PATH = TESTS_PATH + "/_sandbox";
 const std::string TU::SRC_PATH = SANDBOX_PATH + "/source";
-const std::string TU::DEST_PATH = SANDBOX_PATH + "/destination";
+const std::string TU::DST_PATH = SANDBOX_PATH + "/destination";
 
 int TU::CreateSandboxDirectories(const fs::path &sandbox_path) {
 

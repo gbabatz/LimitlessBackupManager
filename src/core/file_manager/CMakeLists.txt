@@ -3,10 +3,12 @@ set(TARGET_NAME file_manager)
 # Define sources
 set(SOURCES
     FileManager.cpp
+    CopyDirectoryContents.cpp
 )
 
 set(HEADERS
     FileManager.hpp
+    CopyDirectoryContents.hpp
 )
 
 # Create library

@@ -24,7 +24,7 @@ extern const std::string TESTS_PATH;
 extern const std::string LOGS_PATH;
 extern const std::string SANDBOX_PATH;
 extern const std::string SRC_PATH;
-extern const std::string DEST_PATH;
+extern const std::string DST_PATH;
 
 int CreateSandboxDirectories(const std::filesystem::path &sandbox_path);
 void FinalizeDirectories(const std::filesystem::path &sandbox_path);
