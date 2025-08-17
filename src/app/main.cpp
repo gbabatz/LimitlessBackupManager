@@ -1,7 +1,8 @@
 #include "crow-server-settings.hpp"
-
 #include "spdlog-settings.hpp"
-#include "spdlog/spdlog.h"
+
+#include <nlohmann/json.hpp>
+#include <spdlog/spdlog.h>
 
 int main() {
   // initialize the logger
