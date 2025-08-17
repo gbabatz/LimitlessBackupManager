@@ -9,7 +9,8 @@ int main() {
   InitializeLogger();
 
   // start the CROW server
-  StartCrowServer();
+  // StartCrowServerApp00();
+  StartCrowServerApp01();
 
   return 0;
 }

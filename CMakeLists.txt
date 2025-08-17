@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.14)
 project(LBM VERSION 0.1 LANGUAGES CXX)
 
 # C++ standard
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)  # Disable compiler-specific extensions
 set(CMAKE_VERBOSE_MAKEFILE OFF)
@@ -41,6 +41,7 @@ target_include_directories(build_common_libs INTERFACE
     /usr/local/include/crow
     /usr/local/include/asio
     ${CMAKE_SOURCE_DIR}/external/cxxopts/include
+    ${CMAKE_SOURCE_DIR}/external/nlohmann-json/include
 )
 
 # Include appropriate configuration
